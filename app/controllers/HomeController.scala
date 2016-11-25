@@ -2,8 +2,7 @@ package controllers
 
 import javax.inject.{Inject, Singleton}
 
-import play.api.Play.current
-import play.api.i18n.Messages.Implicits._
+import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, Controller}
 
 /**
@@ -11,7 +10,7 @@ import play.api.mvc.{Action, Controller}
   */
 
 @Singleton
-class HomeController @Inject() extends Controller {
+class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   def home = Action {
     Ok(views.html.homepage())
