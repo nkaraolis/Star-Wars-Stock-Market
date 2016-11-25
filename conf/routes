@@ -13,4 +13,9 @@ GET     /message                    controllers.AsyncController.message
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 # User account related routes
+GET     /login                      controllers.TraderAccountController.login
+POST    /login                      controllers.TraderAccountController.submitLogin
+GET     /register                   controllers.TraderAccountController.registration
+POST    /register                   controllers.TraderAccountController.submitRegistration
 GET     /userAccount                controllers.TraderAccountController.displayDetails
+POST    /userAccount                controllers.TraderAccountController.updateUserDetails

@@ -22,3 +22,12 @@ object TraderDetailsForm {
     )
   )
 }
+
+object LoginForm {
+  val loginForm = Form(
+    tuple(
+      "username" -> nonEmptyText,
+      "password" -> nonEmptyText
+    )
+  )
+}
