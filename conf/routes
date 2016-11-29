@@ -18,4 +18,4 @@ POST    /login                      controllers.TraderAccountController.submitLo
 GET     /register                   controllers.TraderAccountController.registration
 POST    /register                   controllers.TraderAccountController.submitRegistration
 GET     /userAccount                controllers.TraderAccountController.displayDetails
-POST    /userAccount                controllers.TraderAccountController.updateUserDetails
+POST    /userAccount                controllers.TraderAccountController.submitUserDetailsUpdate

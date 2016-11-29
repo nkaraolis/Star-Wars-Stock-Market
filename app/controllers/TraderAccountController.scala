@@ -19,7 +19,7 @@ class TraderAccountController @Inject()(val messagesApi: MessagesApi) extends Co
     Ok(views.html.user.information.traderDetails(traderAccountService.retrieveTraderDetails))
   }
 
-  def updateUserDetails = TODO
+  def submitUserDetailsUpdate = TODO
 
   def registration = Action {
     implicit request =>
