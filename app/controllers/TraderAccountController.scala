@@ -31,5 +31,10 @@ class TraderAccountController @Inject()(val messagesApi: MessagesApi) extends Co
     Ok(views.html.user.information.login(LoginForm.loginForm))
   }
 
-  def submitLogin = TODO
+  def submitLogin = Action { implicit request =>
+    LoginForm.loginForm.bindFromRequest().fold(
+      formWithErrors => BadRequest(views.html.user.information.login(formWithErrors)),
+      validFormData => Redirect(routes.HomeController.home())
+    )
+  }
 }

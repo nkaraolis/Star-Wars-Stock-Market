@@ -1,6 +1,8 @@
 import com.google.inject.AbstractModule
 import java.time.Clock
 
+import play.api.i18n.DefaultMessagesApi
+import play.i18n.MessagesApi
 import services.{ApplicationTimer, AtomicCounter, Counter}
 
 /**
@@ -24,5 +26,4 @@ class Module extends AbstractModule {
     // Set AtomicCounter as the implementation for Counter.
     bind(classOf[Counter]).to(classOf[AtomicCounter])
   }
-
 }
