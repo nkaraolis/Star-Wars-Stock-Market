@@ -3,7 +3,7 @@ package models
 /**
   * Created by Nick Karaolis on 15/11/16.
   */
-sealed trait Currency {
+sealed abstract class Currency {
   val value: BigDecimal
   val name: String
 }

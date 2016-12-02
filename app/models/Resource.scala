@@ -3,8 +3,7 @@ package models
 /**
   * Created by Nick Karaolis on 15/11/16.
   */
-
-sealed trait Resource {
+sealed abstract class Resource {
   val value: BigDecimal
   val name: String
 }

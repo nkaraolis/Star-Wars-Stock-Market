@@ -21,24 +21,14 @@ class TraderAccountController @Inject()(val messagesApi: MessagesApi) extends Co
 
   def submitUserDetailsUpdate = TODO
 
-  def registration = Action {
-    implicit request =>
-      val form = if (request2flash.get("error").isDefined)
-        TraderDetailsForm.traderDetailsForm.bind(request2flash.data)
-      else
-        TraderDetailsForm.traderDetailsForm
-      Ok(views.html.user.information.registration(form))
+  def registration = Action { implicit request =>
+    Ok(views.html.user.information.registration(TraderDetailsForm.traderDetailsForm))
   }
 
   def submitRegistration = TODO
 
-  def login = Action {
-    implicit request =>
-      val form = if (request2flash.get("error").isDefined)
-        LoginForm.loginForm.bind(request2flash.data)
-      else
-        LoginForm.loginForm
-      Ok(views.html.user.information.login(form))
+  def login = Action { implicit request =>
+    Ok(views.html.user.information.login(LoginForm.loginForm))
   }
 
   def submitLogin = TODO
