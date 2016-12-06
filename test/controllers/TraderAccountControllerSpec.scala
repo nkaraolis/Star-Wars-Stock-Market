@@ -1,26 +1,36 @@
 package controllers
 
-import org.scalatestplus.play.PlaySpec
-import play.api.i18n.MessagesApi
-import play.api.mvc.Results
+import org.scalatestplus.play.{OneAppPerTest, PlaySpec}
+import play.api.i18n.Messages.Implicits._
+import play.api.i18n.{DefaultMessagesApi, Messages, MessagesApi}
+import play.api.inject.bind
+import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
-import play.test.WithApplication
 
 /**
   * Created by Nick Karaolis on 02/12/16.
   */
-class TraderAccountControllerSpec extends PlaySpec with Results {
+class TraderAccountControllerSpec extends PlaySpec with OneAppPerTest {
 
-  val validLoginForm = Tuple2("test", "password")
+  val application = new GuiceApplicationBuilder()
+    .bindings(bind[MessagesApi].to[DefaultMessagesApi])
+
+  val validLoginForm = Seq(
+    "username" -> "test",
+    "password" -> "password"
+  )
 
   "TraderAccountController" should {
-    "submit valid login form and redirect to home page" in new WithApplication {
-      val myCode = app.injector.instanceOf(classOf[MessagesApi])
-      val controller = new TraderAccountController(myCode)
+    "load login page" in {
+      val loginPage = route(app, FakeRequest(GET, "/login")).get
+      status(loginPage) mustBe OK
+      contentAsString(loginPage) must include (Messages("login.title"))
+    }
+    "submit valid login form and redirect to home page" in {
+      val login = route(app, FakeRequest(POST, "/login").withFormUrlEncodedBody(validLoginForm:_*)).get
 
-      val result = controller.submitLogin().apply(FakeRequest().withFormUrlEncodedBody(validLoginForm))
-      redirectLocation(result).get mustEqual routes.HomeController.home().url
+      redirectLocation(login) must be(Some(routes.HomeController.home().url))
     }
   }
 }

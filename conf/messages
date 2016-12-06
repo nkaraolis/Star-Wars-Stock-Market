@@ -1,3 +1,4 @@
-application.name = "Star Wars Stock Market"
-registration.title = "Register a new account"
-account.details.title = "Your account details"
+application.name = Star Wars Stock Market
+registration.title = Register a new account
+account.details.title = Your account details
+login.title = Login with an existing account

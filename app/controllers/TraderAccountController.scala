@@ -4,8 +4,10 @@ import javax.inject.{Inject, Singleton}
 
 import models.{LoginForm, TraderDetailsForm}
 import play.api.i18n.{I18nSupport, MessagesApi}
-import play.api.mvc.{Action, Controller}
+import play.api.mvc.{Action, AnyContent, Controller}
 import services.TraderAccountService
+
+import scala.concurrent.Future
 
 /**
   * Created by Nick Karaolis on 21/11/16.
@@ -31,10 +33,10 @@ class TraderAccountController @Inject()(val messagesApi: MessagesApi) extends Co
     Ok(views.html.user.information.login(LoginForm.loginForm))
   }
 
-  def submitLogin = Action { implicit request =>
+  def submitLogin:Action[AnyContent] = Action.async { implicit request =>
     LoginForm.loginForm.bindFromRequest().fold(
-      formWithErrors => BadRequest(views.html.user.information.login(formWithErrors)),
-      validFormData => Redirect(routes.HomeController.home())
+      formWithErrors => Future.successful(BadRequest(views.html.user.information.login(formWithErrors))),
+      validFormData => Future.successful(Redirect(routes.HomeController.home()))
     )
   }
 }
