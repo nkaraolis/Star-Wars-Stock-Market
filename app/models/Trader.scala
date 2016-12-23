@@ -2,6 +2,7 @@ package models
 
 import play.api.data._
 import play.api.data.Forms._
+import play.api.i18n.Messages
 
 /**
   * Created by Nick Karaolis on 15/11/16.
@@ -26,8 +27,8 @@ object TraderDetailsForm {
 object LoginForm {
   val loginForm = Form(
     tuple(
-      "username" -> nonEmptyText,
-      "password" -> nonEmptyText
+      "Username" -> text.verifying("username.required", _.nonEmpty),
+      "Password" -> text.verifying("password.required", _.nonEmpty)
     )
   )
 }

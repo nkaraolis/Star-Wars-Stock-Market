@@ -13,22 +13,19 @@ import play.api.test.Helpers._
   */
 class TraderAccountControllerSpec extends PlaySpec with OneAppPerSuite {
 
-  val application = new GuiceApplicationBuilder()
-    .bindings(bind[MessagesApi].to[DefaultMessagesApi])
-
   val validLoginForm = Seq(
-    "username" -> "test",
-    "password" -> "password"
+    "Username" -> "test",
+    "Password" -> "password"
   )
 
   "TraderAccountController" should {
     "load login page" in {
       val loginPage = route(app, FakeRequest(GET, "/login")).get
       status(loginPage) mustBe OK
-      contentAsString(loginPage) must include (Messages("login.title"))
+      contentAsString(loginPage) must include(Messages("login.title"))
     }
     "submit valid login form and redirect to home page" in {
-      val login = route(app, FakeRequest(POST, "/login").withFormUrlEncodedBody(validLoginForm:_*)).get
+      val login = route(app, FakeRequest(POST, "/login").withFormUrlEncodedBody(validLoginForm: _*)).get
 
       redirectLocation(login) must be(Some(routes.HomeController.home().url))
     }

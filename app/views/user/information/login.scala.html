@@ -1,4 +1,11 @@
 @(loginForm: Form[(String, String)])(implicit messages: Messages)
 @main(Messages("login.title")) {
-
+    @helper.form(action = routes.TraderAccountController.submitLogin()) {
+        <legend>
+        @Messages("", Messages("customer.login"))
+        </legend>
+        @helper.inputText(loginForm("Username"), 'size -> 20)
+        @helper.inputPassword(loginForm("Password"), 'size -> 20)
+        <input type="submit" class="btn-primary" value='@Messages("login.button")'>
+    }
 }
