@@ -2575,10 +2575,11 @@ output {
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #999;
+  color: #001f99;
 }
 .form-control::-webkit-input-placeholder {
-  color: #999;
+  color: #150099;
+  opacity: 0.3;
 }
 .form-control::-ms-expand {
   background-color: transparent;

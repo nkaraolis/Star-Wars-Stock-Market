@@ -1,11 +1,19 @@
-@(loginForm: Form[(String, String)])(implicit messages: Messages)
+@(loginForm: Form[(String, String)])(implicit messages: Messages, flash: Flash)
 @main(Messages("login.title")) {
-    @helper.form(action = routes.TraderAccountController.submitLogin()) {
-        <legend>
-        @Messages("", Messages("customer.login"))
-        </legend>
-        @helper.inputText(loginForm("Username"), 'size -> 20)
-        @helper.inputPassword(loginForm("Password"), 'size -> 20)
-        <input type="submit" class="btn-primary" value='@Messages("login.button")'>
-    }
+    <div class = "row">
+        <div class = "col-md-5"></div>
+        <div class = "col-md-2">@helper.form(action = routes.TraderAccountController.submitLogin()) {
+            <legend>
+            @Messages("", Messages("customer.login"))
+            </legend>
+            @helper.input(loginForm("Username"), 'size -> 20) { (id, name, value, args) =>
+                <input type="text" class="form-control" placeholder="Username" name="@name" id="@id" @toHtmlArgs(args)>
+            }
+            @helper.input(loginForm("Password"), 'size -> 20) { (id, name, value, args) =>
+                <input type="password" class="form-control" placeholder="Password" name="@name" id="@id" @toHtmlArgs(args)>
+            }
+            <input type="submit" class="btn btn-success btn-block" value='@Messages("login.button")'>
+        </div>
+    </div>
+}
 }

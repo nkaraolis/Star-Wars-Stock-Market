@@ -3,8 +3,8 @@ package controllers
 import javax.inject.{Inject, Singleton}
 
 import models.{LoginForm, TraderDetailsForm}
-import play.api.i18n.{I18nSupport, MessagesApi}
-import play.api.mvc.{Action, AnyContent, Controller}
+import play.api.i18n.{I18nSupport, Messages, MessagesApi}
+import play.api.mvc.{Action, AnyContent, Controller, Flash}
 import services.TraderAccountService
 
 import scala.concurrent.Future
