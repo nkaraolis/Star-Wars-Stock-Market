@@ -12,7 +12,7 @@ import play.api.mvc.{Action, Controller}
 @Singleton
 class HomeController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
-  def home = Action {
+  def home = Action { implicit request =>
     Ok(views.html.homepage())
   }
 }

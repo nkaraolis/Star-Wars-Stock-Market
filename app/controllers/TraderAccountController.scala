@@ -17,7 +17,7 @@ import scala.concurrent.Future
 class TraderAccountController @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
   val traderAccountService = new TraderAccountService
 
-  def displayTraderDetails = Action {
+  def displayTraderDetails = Action { implicit request =>
     Ok(views.html.user.information.traderDetails(traderAccountService.retrieveTraderDetails))
   }
 

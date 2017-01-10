@@ -4276,7 +4276,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 25px;
   line-height: 20px;
 }
 .navbar-brand:hover,
@@ -4494,11 +4494,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: WhiteSmoke;
+  border-color: purple;
+  height: 80px;
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  color: purple;
+  vertical-align: middle;
+  line-height:40px;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
