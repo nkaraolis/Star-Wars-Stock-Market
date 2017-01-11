@@ -5,23 +5,23 @@
     <div id="header"> </div>
     @* Here's where we render the page title `String`. *@
     <title>@title</title>
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/navigation.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
     <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
-    <body>
-        <nav class="navbar navbar-default navbar-static-top">
-            <a class="navbar-brand" href="@routes.HomeController.home()">Star Wars Stock Market</a>
-            @if(request.session.get("punks").isEmpty) {
-                <form action="@routes.TraderAccountController.displayLogin()">
-                    <input type="submit" class="btn btn-success" value='@Messages("login.button")'
-                    style="float: right; margin-right: 20px; margin-top: 20px;">
-                </form>
-                }
-        </nav>
 
+    <body>
+        <div class="col-sm-2 nav-sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="#"><img src="@routes.Assets.versioned("images/home-icon-purple.png")" width="30" height="30" style="margin-right: 20px">Homepage</a></li>
+                <li><a href="#"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Currencies</a></li>
+                <li><a href="#"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Resources</a></li>
+                <li><a href="#"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Export</a></li>
+            </ul>
+        </div>
         @* And here's where we render the `Html` object containing
         * the page content. *@
         @content
+
     </body>
 </html>

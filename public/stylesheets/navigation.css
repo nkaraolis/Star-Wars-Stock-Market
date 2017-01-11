@@ -1,0 +1,40 @@
+html,body {
+    height:100%;
+    background: #364554;
+}
+
+.navbar-main {
+    background-color: whitesmoke;
+    height: 80px;
+    border: 100px red;
+}
+
+.navbar-main .navbar-brand {
+    color: black;
+    vertical-align: middle;
+    line-height:40px;
+}
+
+.nav-sidebar {
+    margin-left: -12px;
+    background-color: #1c3754;
+    height: 100%;
+}
+
+.nav-sidebar > li > a {
+    padding-left: 20px;
+    color: white;
+    font-size: 20px;
+}
+
+.nav-sidebar > li > a:hover {
+    background-color: lightgrey;
+}
+
+.nav-sidebar > li > a:active {
+    background-color: lightgrey;
+}
+
+.nav-sidebar > li > a:visited {
+    background-color: lightgrey;
+}
