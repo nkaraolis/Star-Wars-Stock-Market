@@ -19,3 +19,6 @@ GET     /register                   controllers.TraderAccountController.displayR
 POST    /register                   controllers.TraderAccountController.submitRegistration
 GET     /userAccount                controllers.TraderAccountController.displayTraderDetails
 POST    /userAccount                controllers.TraderAccountController.submitUpdateTraderDetails
+
+GET     /resources                  controllers.ResourcesController.displayResources
+GET     /currencies                 controllers.ResourcesController.displayCurrencies

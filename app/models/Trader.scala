@@ -8,9 +8,9 @@ import play.api.i18n.Messages
   * Created by Nick Karaolis on 15/11/16.
   */
 
-case class Trader(firstName: String, lastName: String, userName: String, balances: List[Balance], resources: List[Resources])
+case class Trader(firstName: String, lastName: String, userName: String, balances: Seq[Balance], resources: Seq[Resources])
 
-case class Balance(currency: Currency, amount: BigDecimal)
+case class Balance(currency: Resource, amount: BigDecimal)
 
 case class Resources(resource: Resource, amount: Int)
 

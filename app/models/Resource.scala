@@ -1,59 +1,36 @@
 package models
 
+import javax.inject.Singleton
+
 /**
   * Created by Nick Karaolis on 15/11/16.
   */
-sealed abstract class Resource {
-  val value: BigDecimal
-  val name: String
-}
+case class Resource(resourceID: Int = 0, var value: BigDecimal = BigDecimal.exact("0"), name: String = "", resourceType: String = "resource")
 
-case class Alum() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Alum"
-}
+class Alum extends Resource(resourceID = 1, name = "Alum")
 
-case class Chromium() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Chromium"
-}
+class Chromium extends Resource(resourceID = 2, name = "Chromium")
 
-case class Coal() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Coal"
-}
+class Coal extends Resource(resourceID = 3, name = "Coal")
 
-case class Exonium() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Exonium"
-}
+class Exonium extends Resource(resourceID = 4, name ="Exonium")
 
-case class Ionite() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Ionite"
-}
+class Ionite extends Resource(resourceID = 5, name ="Ionite")
 
-case class LightsaberCrystal() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Lightsaber Crystal"
-}
+class LightsaberCrystal extends Resource(resourceID = 6, name ="LightsaberCrystal")
 
-case class Ore() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Ore"
-}
+class Ore extends Resource(resourceID = 7, name ="Ore")
 
-case class Spice() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Spice"
-}
+class Spice extends Resource(resourceID = 8, name ="Spice")
 
-case class Stygium() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Stygium"
-}
+class Stygium extends Resource(resourceID = 9, name ="Stygium")
 
-case class Thorilide() extends Resource {
-  override val value = BigDecimal.exact("0")
-  override val name = "Thorilide"
-}
+class Thorilide extends Resource(resourceID = 10, name ="Thorilide")
+
+class RepublicCredit extends Resource(resourceID = 11, name ="RepublicCredit", resourceType = "currency")
+
+class Wupiupi extends Resource(resourceID = 12, name ="Wupiupi", resourceType = "currency")
+
+class Druggat extends Resource(resourceID = 13, name ="Druggat", resourceType = "currency")
+
+class NovaCrystal extends Resource(resourceID = 14, name ="NovaCrystal", resourceType = "currency")
