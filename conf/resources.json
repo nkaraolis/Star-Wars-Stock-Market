@@ -1,0 +1,62 @@
+[
+  {
+    "resourceID": 1,
+    "value": "0",
+    "name": "Alum",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 2,
+    "value": "0",
+    "name": "Chromium",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 3,
+    "value": "0",
+    "name": "Coal",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 4,
+    "value": "0",
+    "name": "Exonium",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 5,
+    "value": "0",
+    "name": "Ionite",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 6,
+    "value": "0",
+    "name": "LightsaberCrystal",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 7,
+    "value": "0",
+    "name": "Ore",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 8,
+    "value": "0",
+    "name": "Spice",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 9,
+    "value": "0",
+    "name": "Stygium",
+    "resourceType": "resources"
+  },
+  {
+    "resourceID": 10,
+    "value": "0",
+    "name": "Thorilide",
+    "resourceType": "resources"
+  }
+]

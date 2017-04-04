@@ -5,7 +5,7 @@ import javax.inject.Singleton
 /**
   * Created by Nick Karaolis on 15/11/16.
   */
-case class Resource(resourceID: Int = 0, var value: BigDecimal = BigDecimal.exact("0"), name: String = "", resourceType: String = "resource")
+case class Resource(resourceID: Int = 0, var value: BigDecimal = BigDecimal.exact("0"), name: String = "", resourceType: String = "resources")
 
 class Alum extends Resource(resourceID = 1, name = "Alum")
 
@@ -27,10 +27,10 @@ class Stygium extends Resource(resourceID = 9, name ="Stygium")
 
 class Thorilide extends Resource(resourceID = 10, name ="Thorilide")
 
-class RepublicCredit extends Resource(resourceID = 11, name ="RepublicCredit", resourceType = "currency")
+class RepublicCredit extends Resource(resourceID = 11, name ="RepublicCredit", resourceType = "currencies")
 
-class Wupiupi extends Resource(resourceID = 12, name ="Wupiupi", resourceType = "currency")
+class Wupiupi extends Resource(resourceID = 12, name ="Wupiupi", resourceType = "currencies")
 
-class Druggat extends Resource(resourceID = 13, name ="Druggat", resourceType = "currency")
+class Druggat extends Resource(resourceID = 13, name ="Druggat", resourceType = "currencies")
 
-class NovaCrystal extends Resource(resourceID = 14, name ="NovaCrystal", resourceType = "currency")
+class NovaCrystal extends Resource(resourceID = 14, name ="NovaCrystal", resourceType = "currencies")

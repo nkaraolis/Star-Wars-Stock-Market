@@ -1,0 +1,26 @@
+[
+  {
+    "resourceID": 11,
+    "value": "0",
+    "name": "RepublicCredit",
+    "resourceType": "currencies"
+  },
+  {
+    "resourceID": 12,
+    "value": "0",
+    "name": "Wupiupi",
+    "resourceType": "currencies"
+  },
+  {
+    "resourceID": 13,
+    "value": "0",
+    "name": "Druggat",
+    "resourceType": "currencies"
+  },
+  {
+    "resourceID": 14,
+    "value": "0",
+    "name": "NovaCrystal",
+    "resourceType": "currencies"
+  }
+]
