@@ -36,13 +36,20 @@ class ResourcesController @Inject()(val messagesApi: MessagesApi, val mongoConne
     }
   }
 
-//  def putCollections(collectionName: String) = Action.async {
-//    val collectionFile = loadJsonFile(s"/$collectionName.json")
-//    val resources = Json.fromJson[Seq[Resource]](collectionFile).get
-//    mongoConnection.createCollection(collectionName, resources).flatMap[Result] {
-//      case (200, insertResult: String) => Future.successful(Ok(insertResult))
-//      case (_, errorMessage: String) => Future.successful(BadRequest(errorMessage))
-//    }
-//  }
+  def createCollection(collectionName: String) = Action.async {
+    val collectionFile = loadJsonFile(s"/$collectionName.json")
+    val resources = Json.fromJson[Seq[Resource]](collectionFile).get
+    mongoConnection.createCollection(collectionName, resources).flatMap[Result] {
+      case (true, result) => Future.successful(Ok(result))
+      case (_, result) => Future.successful(BadRequest(result))
+    }
+  }
+
+  def removeCollection(collectionName: String) = Action.async {
+    mongoConnection.dropCollection(collectionName).flatMap[Result] {
+      case (true, result) => Future.successful(Ok(result))
+      case (_, result) => Future.successful(BadRequest(result))
+    }
+  }
 
 }

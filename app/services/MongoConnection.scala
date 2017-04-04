@@ -3,7 +3,6 @@ package services
 import javax.inject.Inject
 
 import models._
-import play.api.http.Status._
 import play.api.libs.json.Json
 import play.modules.reactivemongo.ReactiveMongoApi
 import reactivemongo.play.json._
@@ -24,16 +23,25 @@ class MongoConnection @Inject()(val reactiveMongoApi: ReactiveMongoApi) {
     resource <- resources.find(Json.obj(idField -> idValue)).one[Resource]
   } yield resource
 
-  def createCollection(collectionName: String, documents: Seq[Resource]): Future[(Int, String)] = {
-    findCollection(collectionName).flatMap[(Int, String)] {
+  def createCollection(collectionName: String, documents: Seq[Resource]): Future[(Boolean, String)] = {
+    findCollection(collectionName).flatMap[(Boolean, String)] {
       collection =>
         val bulkDocs = documents.map(implicitly[collection.ImplicitlyDocumentProducer](_))
-        collection.bulkInsert(ordered = false)(bulkDocs: _*).flatMap[(Int, String)] {
+        collection.bulkInsert(ordered = false)(bulkDocs: _*).flatMap[(Boolean, String)] {
           result => result.ok match {
-            case true => Future.successful(OK, "Insert successful")
-            case _ => Future.successful(BAD_REQUEST, result.errmsg.get)
+            case true => Future.successful(true, s"Insertion of $collectionName successful")
+            case _ => Future.successful(false, result.errmsg.get)
           }
         }
+    }
+  }
+
+  def dropCollection(collectionName: String): Future[(Boolean, String)] = {
+    findCollection(collectionName).flatMap {
+      coll => coll.drop(failIfNotFound = true).flatMap {
+        case result@true => Future.successful(result, s"Dropping of $collectionName successful")
+        case result => Future.successful(result, s"Dropping of $collectionName unsuccessful")
+      }
     }
   }
 

@@ -23,4 +23,6 @@ POST    /userAccount                controllers.TraderAccountController.submitUp
 GET     /resources                  controllers.ResourcesController.displayResources
 GET     /currencies                 controllers.ResourcesController.displayCurrencies
 
-#GET     /createCollection/:collName controllers.ResourcesController.putCollections(collName)
+# Mongo collection modifications
+GET     /createCollection/:collName controllers.ResourcesController.createCollection(collName)
+GET     /dropCollection/:collName   controllers.ResourcesController.removeCollection(collName)
