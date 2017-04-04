@@ -1,0 +1,6 @@
+@(resources: Seq[Resource])(implicit messages: Messages, request: Request[_])
+@main("Resources") {
+    @resources.map { resource =>
+        <h1> Resource name: @resource.name </h1>
+    }
+}

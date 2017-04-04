@@ -17,22 +17,15 @@ import scala.concurrent.Future
 class ResourcesController @Inject()(val messagesApi: MessagesApi, val mongoConnection: MongoConnection)
   extends Controller with I18nSupport {
 
-  def retrieveResources(resources: Seq[Resource]): Seq[Future[Option[Resource]]] =
-    resources.map { resource => mongoConnection.findByID("resourceID", resource.resourceID, resource.resourceType) }
-
-  def displayCurrencies() = Action.async { request =>
-    mongoConnection.findCollection("currencies").map {
-      currenciesColl =>
-        Json.fromJson[Seq[Resource]](Json.parse(currenciesColl.toString))
-        Ok("Currencies page")
+  def displayCurrencies() = Action.async { implicit request =>
+    mongoConnection.retrieveAllResources("currencies").map {
+      currenciesColl => Ok(views.html.resources(currenciesColl))
     }
   }
 
-  def displayResources() = Action.async {
-    mongoConnection.findCollection("resources").map {
-      resourcesColl =>
-        Json.fromJson[Seq[Resource]](Json.parse(resourcesColl.toString))
-        Ok("Resources page")
+  def displayResources() = Action.async { implicit request =>
+    mongoConnection.retrieveAllResources("resources").map {
+      resourcesColl => Ok(views.html.resources(resourcesColl))
     }
   }
 
