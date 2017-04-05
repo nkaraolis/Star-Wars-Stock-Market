@@ -40,6 +40,6 @@ class TraderAccountController @Inject()(val messagesApi: MessagesApi,
   def submitLogin: Action[AnyContent] = Action.async { implicit request =>
     LoginForm.loginForm.bindFromRequest().fold(
       formWithErrors => Future.successful(BadRequest(views.html.user.information.login(formWithErrors))),
-      validFormData => Future.successful(Redirect(routes.HomeController.home()).withHeaders(AUTHORIZATION -> Random.nextString(50))))
+      _ => Future.successful(Redirect(routes.HomeController.home()).withHeaders(AUTHORIZATION -> Random.nextString(50))))
   }
 }

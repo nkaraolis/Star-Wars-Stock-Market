@@ -3,12 +3,12 @@ package services
 import javax.inject.Inject
 
 import models._
-import play.api.libs.json.{JsArray, JsObject, JsValue, Json}
+import play.api.libs.json.{JsArray, JsObject, Json}
 import play.modules.reactivemongo.ReactiveMongoApi
 import reactivemongo.api.ReadPreference
 import reactivemongo.play.json._
+import reactivemongo.play.json.collection.JSONCollection
 import reactivemongo.play.json.collection.JsCursor._
-import reactivemongo.play.json.collection.{JSONCollection, JsCursor}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -39,26 +39,31 @@ class MongoConnection @Inject()(val reactiveMongoApi: ReactiveMongoApi) {
     }
   }
 
-  def createCollection(collectionName: String, documents: Seq[Resource]): Future[(Boolean, String)] = {
+  def createResourceCollection(collectionName: String, documents: Seq[Resource]): Future[(Boolean, String)] = {
     findCollection(collectionName).flatMap {
       collection =>
         val bulkDocs = documents.map(implicitly[collection.ImplicitlyDocumentProducer](_))
         collection.bulkInsert(ordered = false)(bulkDocs: _*).flatMap {
-          result => result.ok match {
-            case true => Future.successful(true, s"Insertion of $collectionName successful")
-            case _ => Future.successful(false, result.errmsg.get)
-          }
+          result =>
+            if (result.ok) {
+              Future.successful(true, s"Insertion of $collectionName successful")
+            } else {
+              Future.successful(false, result.errmsg.get)
+            }
         }
     }
   }
 
   def dropCollection(collectionName: String): Future[(Boolean, String)] = {
     findCollection(collectionName).flatMap {
-      coll => coll.drop(failIfNotFound = true).flatMap {
-        case result@true => Future.successful(result, s"Dropping of $collectionName successful")
-        case result => Future.successful(result, s"Dropping of $collectionName unsuccessful")
-      }
+      coll =>
+        coll.drop(failIfNotFound = true).flatMap {
+          case result@true => Future.successful(result, s"Dropping of $collectionName successful")
+          case result => Future.successful(result, s"Dropping of $collectionName unsuccessful")
+        }
     }
   }
+
+  def countCollection(collectionName: String): Future[Int] = findCollection(collectionName).flatMap(_.count())
 
 }
