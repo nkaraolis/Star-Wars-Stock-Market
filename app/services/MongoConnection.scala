@@ -25,6 +25,13 @@ class MongoConnection @Inject()(val reactiveMongoApi: ReactiveMongoApi) {
     collection.find(Json.obj()).cursor[JsObject](ReadPreference.primary).jsArray()
   }
 
+  /**
+    * Creates the next ID for the given collection to be used when inserting a new record
+    */
+  def incrementID(collectionName: String): Future[Int] = {
+    countCollection(collectionName).map(count => count + 1)
+  }
+
   def findCollection(collectionName: String): Future[JSONCollection] = reactiveMongoApi.database.map(_.collection[JSONCollection](collectionName))
 
   /**
@@ -64,6 +71,9 @@ class MongoConnection @Inject()(val reactiveMongoApi: ReactiveMongoApi) {
     }
   }
 
+  /**
+    * Counts the number of documents within a given collection
+    */
   def countCollection(collectionName: String): Future[Int] = findCollection(collectionName).flatMap(_.count())
 
 }

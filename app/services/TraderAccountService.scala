@@ -8,7 +8,7 @@ import models.Trader
 class TraderAccountService {
 
   def retrieveTraderDetails: Trader = {
-    Trader("first", "last", "user", List.empty, List.empty)
+    Trader(0,"first", "last", "user", Seq.empty, Seq.empty)
   }
 
   def updateTraderDetails(trader: Trader): Unit = {

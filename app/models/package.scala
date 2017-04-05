@@ -1,4 +1,7 @@
-import play.api.libs.json.{Json, OFormat}
+import java.time.format.DateTimeFormatter
+import java.util.Locale
+
+import play.api.libs.json.{JsValue, Json, OFormat}
 import reactivemongo.bson.BSON
 import reactivemongo.play.json.Writers
 
@@ -12,6 +15,9 @@ package object models {
   implicit val resourcesFormatter = Json.format[Resources]
   implicit val traderFormatter = Json.format[Trader]
 
-  def loadJsonFile(fileName: String) = Json.parse(getClass.getResourceAsStream(fileName))
+  def loadJsonFile(fileName: String): JsValue = Json.parse(getClass.getResourceAsStream(fileName))
+
+  val formatter = "yyyy-MM-dd HH:mm:ss"
+  val dateTimeFormat = DateTimeFormatter.ofPattern(formatter, Locale.ENGLISH)
 
 }
