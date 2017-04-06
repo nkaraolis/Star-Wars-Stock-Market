@@ -5,7 +5,7 @@ import javax.inject.Inject
 import models._
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json._
-import play.api.mvc.{Action, AnyContent, Controller, Result}
+import play.api.mvc.{Action, AnyContent, Controller}
 import services.MongoConnection
 
 import scala.concurrent.ExecutionContext.Implicits.global

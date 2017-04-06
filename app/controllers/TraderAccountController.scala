@@ -2,12 +2,13 @@ package controllers
 
 import javax.inject.{Inject, Singleton}
 
-import models.{LoginForm, TraderDetailsForm}
+import models.{LoginForm, Trader, TraderDetailsForm}
 import play.api.Logger
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.mvc.{Action, AnyContent, Controller}
 import services.{MongoConnection, TraderAccountService}
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.Random
 
@@ -16,7 +17,7 @@ import scala.util.Random
   */
 
 @Singleton
-class TraderAccountController @Inject()(messagesApi: MessagesApi,
+class TraderAccountController @Inject()(val messagesApi: MessagesApi,
                                         traderAccountService: TraderAccountService,
                                         mongoConnection: MongoConnection) extends Controller with I18nSupport {
 
@@ -34,12 +35,18 @@ class TraderAccountController @Inject()(messagesApi: MessagesApi,
   }
 
   def submitRegistration: Action[AnyContent] = Action.async { implicit request =>
-    mongoConnection.incrementID("traders").flatMap {
-      traderID =>
-        // TODO: Use traderID as the traderID for the newly registered trader
-        Logger.debug(s"New traderID created with value: $traderID")
-        Future.successful(Redirect(routes.TraderAccountController.displayLogin()))
-    }
+    TraderDetailsForm.traderDetailsForm.bindFromRequest().fold(
+      formWithErrors => Future.successful(BadRequest(views.html.user.information.registration(formWithErrors))),
+      validForm =>
+        mongoConnection.incrementID("traders").flatMap {
+          traderID =>
+            Logger.debug(s"New traderID created with value: $traderID")
+            //TODO: Store newly created trader in the database
+            val newTrader = Trader(traderID, validForm._1, validForm._2, validForm._3, validForm._4, validForm._5)
+            traderAccountService.updateTraderDetails(newTrader)
+            Future.successful(Redirect(routes.TraderAccountController.displayLogin()))
+        }
+    )
   }
 
   def displayLogin = Action { implicit request =>

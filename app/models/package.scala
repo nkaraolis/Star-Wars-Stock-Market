@@ -1,9 +1,8 @@
+import java.io.InputStream
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-import play.api.libs.json.{JsValue, Json, OFormat}
-import reactivemongo.bson.BSON
-import reactivemongo.play.json.Writers
+import play.api.libs.json.{JsValue, Json}
 
 /**
   * Created by Nick Karaolis on 30/03/17.
