@@ -14,9 +14,8 @@
         <div class="col-sm-2 nav-sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="@routes.HomeController.home()"><img src="@routes.Assets.versioned("images/home-icon-purple.png")" width="30" height="30" style="margin-right: 20px">Homepage</a></li>
-                <li><a href="#"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Currencies</a></li>
-                <li><a href="#"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Resources</a></li>
-                <li><a href="#"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Export</a></li>
+                <li><a href="@routes.ResourcesController.displayCurrencies()"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Currencies</a></li>
+                <li><a href="@routes.ResourcesController.displayResources()"><img src="@routes.Assets.versioned("images/favicon.png")" width="30" height="30" style="margin-right: 20px">Resources</a></li>
             </ul>
         </div>
         @* And here's where we render the `Html` object containing

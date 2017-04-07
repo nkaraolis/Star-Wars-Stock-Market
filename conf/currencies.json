@@ -2,7 +2,7 @@
   {
     "resourceID": 11,
     "value": "0",
-    "name": "RepublicCredit",
+    "name": "Republic Credit",
     "resourceType": "currencies"
   },
   {
@@ -20,7 +20,7 @@
   {
     "resourceID": 14,
     "value": "0",
-    "name": "NovaCrystal",
+    "name": "Nova Crystal",
     "resourceType": "currencies"
   }
 ]

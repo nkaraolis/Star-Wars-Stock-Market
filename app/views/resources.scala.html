@@ -1,6 +1,10 @@
 @(resources: Seq[Resource])(implicit messages: Messages, request: Request[_])
 @main("Resources") {
+    <div class="row">
     @resources.map { resource =>
-        <h1> Resource name: @resource.name </h1>
+        <div class="col-sm-2" style="text-align: center">
+            <h2 style="color: white"> Resource name: @resource.name </h2>
+        </div>
     }
+    </div>
 }

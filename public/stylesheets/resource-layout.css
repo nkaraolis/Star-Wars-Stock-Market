@@ -1,0 +1,47 @@
+/* `Container
+----------------------------------------------------------------------------------------------------*/
+
+.container_12 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+    height:: 960px;
+    padding-top: 50px;
+}
+
+.borderGrid {
+    display: inline-block;
+    width: 150px;
+    height: 75px;
+    margin: 10px;
+    border: 3px solid #73AD21;
+}
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11{
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 25px;
+}
+
+.grid_3 :hover{
+}
+
+.container_12 .grid_3 {
+    width: 220px;
+}
+
+.container_12 .grid_4 {
+    width: 300px;
+}
