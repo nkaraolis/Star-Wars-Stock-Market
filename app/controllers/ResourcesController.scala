@@ -32,7 +32,7 @@ class ResourcesController @Inject()(val messagesApi: MessagesApi, val mongoConne
   def createCollection(collectionName: String): Action[AnyContent] = Action.async {
     val collectionFile = loadJsonFile(s"/$collectionName.json")
     val resources = Json.fromJson[Seq[Resource]](collectionFile).get
-    mongoConnection.createResourceCollection(collectionName, resources).flatMap {
+    mongoConnection.bulkInsertResources(collectionName, resources).flatMap {
       case (true, result) => Future.successful(Ok(result))
       case (_, result) => Future.successful(BadRequest(result))
     }

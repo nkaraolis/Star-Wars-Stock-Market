@@ -1,4 +1,12 @@
 @(registrationForm: Form[(String, String, String, String, String)])(implicit messages: Messages, request: Request[_])
 @main(Messages("registration.title")) {
-
+    <div class = "center-block text-center" style="width: 250px">@helper.form(action = routes.TraderAccountController.submitRegistration()) {
+        @helper.inputText(registrationForm("First Name"), 'id -> "firstName", 'size -> 20, 'class -> "form-control", 'placeholder -> "First Name")
+        @helper.inputText(registrationForm("Last Name"), 'id -> "lastName", 'size -> 20, 'class -> "form-control", 'placeholder -> "Last Name")
+        @helper.inputText(registrationForm("Email"), 'id -> "email", 'size -> 50, 'class -> "form-control", 'placeholder -> "Email")
+        @helper.inputText(registrationForm("Username"), 'id -> "username", 'size -> 20, 'class -> "form-control", 'placeholder -> "Username")
+        @helper.inputText(registrationForm("Password"), 'id -> "password", 'size -> 20, 'class -> "form-control", 'placeholder -> "Password", 'type -> "password")
+        <input type="submit" class="btn btn-success btn-block" value='@Messages("registration.button")'>
+    </div>
+}
 }

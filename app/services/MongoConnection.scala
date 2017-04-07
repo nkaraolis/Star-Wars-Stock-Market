@@ -6,7 +6,7 @@ import models._
 import play.api.libs.json.{JsArray, JsObject, Json}
 import play.modules.reactivemongo.ReactiveMongoApi
 import reactivemongo.api.ReadPreference
-import reactivemongo.api.commands.WriteResult
+import reactivemongo.api.commands.{MultiBulkWriteResult, WriteResult}
 import reactivemongo.play.json._
 import reactivemongo.play.json.collection.JSONCollection
 import reactivemongo.play.json.collection.JsCursor._
@@ -35,17 +35,12 @@ class MongoConnection @Inject()(val reactiveMongoApi: ReactiveMongoApi) {
     documents <- getAllDocuments(collection)
   } yield Json.fromJson[Seq[Resource]](documents).get
 
-  def createResourceCollection(collectionName: String, documents: Seq[Resource]): Future[(Boolean, String)] = {
+  def bulkInsertResources(collectionName: String, documents: Seq[Resource]): Future[(Boolean, String)] = {
     findCollection(collectionName).flatMap {
       collection =>
         val bulkDocs = documents.map(implicitly[collection.ImplicitlyDocumentProducer](_))
-        collection.bulkInsert(ordered = false)(bulkDocs: _*).flatMap {
-          result =>
-            if (result.ok) {
-              Future.successful(true, s"Execution of bulk insert successful")
-            } else {
-              Future.successful(false, result.errmsg.get)
-            }
+        collection.bulkInsert(ordered = false)(bulkDocs: _*).map {
+          resultCheck(_, "bulk insert")
         }
     }
   }
@@ -69,7 +64,7 @@ class MongoConnection @Inject()(val reactiveMongoApi: ReactiveMongoApi) {
     findCollection(collectionName: String).flatMap {
       collection =>
         collection.insert(document).map {
-          resultCheck(_, s"inserting $collectionName")
+          resultCheck(_, s"inserting into $collectionName")
         }
     }
   }
@@ -94,6 +89,14 @@ class MongoConnection @Inject()(val reactiveMongoApi: ReactiveMongoApi) {
     * Useful method which aids in having consistent responses for mongo methods
     */
   private def resultCheck(result: WriteResult, method: String): (Boolean, String) = {
+    if (result.ok) {
+      (result.ok, s"Execution of $method successful")
+    } else {
+      (result.ok, result.errmsg.get)
+    }
+  }
+
+  private def resultCheck(result: MultiBulkWriteResult, method: String): (Boolean, String) = {
     if (result.ok) {
       (result.ok, s"Execution of $method successful")
     } else {

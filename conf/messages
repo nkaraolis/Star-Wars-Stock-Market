@@ -1,8 +1,23 @@
+#Page titles
 application.name = Star Wars Stock Market
 registration.title = Register a new account
 account.details.title = Your account details
-
 login.title = Login with an existing account
+
+#Page buttons
 login.button = Login
-username.required = Username is required
-password.required = Password is required
+registration.button = Submit
+
+#Registration form validation
+registration.username.required = Username is required
+registration.firstname.required = First name is required
+registration.firstname.capital.required = First name must start with a capital letter
+registration.lastname.required = Last name is required
+registration.lastname.capital.required = Last name must start with a capital letter
+registration.password.required = Password is required
+registration.email.required = Email is required
+registration.email.format = Email must be in the format of x@x.xxx
+
+#Login form validation
+login.username.required = Username is required
+login.password.required = Password is required
