@@ -1,47 +1,28 @@
-/* `Container
-----------------------------------------------------------------------------------------------------*/
-
-.container_12 {
-    margin-left: auto;
-    margin-right: auto;
-    width: 960px;
-    height:: 960px;
-    padding-top: 50px;
+.album {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #5f7282;
 }
 
-.borderGrid {
-    display: inline-block;
-    width: 150px;
-    height: 75px;
-    margin: 10px;
-    border: 3px solid #73AD21;
+#card-img {
+    height: 280px;
+    width: 356px;
 }
 
-.grid_1,
-.grid_2,
-.grid_3,
-.grid_4,
-.grid_5,
-.grid_6,
-.grid_7,
-.grid_8,
-.grid_9,
-.grid_10,
-.grid_11{
-    display: inline;
+.card {
     float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 25px;
+    width: 100%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    background-color: #b9b9b9;
+    border-radius: 5px;
+    border: 3px solid #000000;
 }
 
-.grid_3 :hover{
+.card > img {
+    margin-bottom: .75rem;
 }
 
-.container_12 .grid_3 {
-    width: 220px;
-}
-
-.container_12 .grid_4 {
-    width: 300px;
+.card-text {
+    font-size: 85%;
 }

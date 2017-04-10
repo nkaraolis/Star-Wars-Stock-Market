@@ -1,0 +1,15 @@
+@(resources: Seq[Resource])(implicit messages: Messages, request: Request[_])
+<div class="album">
+    <div class="container">
+        <div class ="row">
+            @resources.map { resource =>
+                <div class="col-sm-4" style="text-align: center">
+                    <div class="card">
+                        <img src="@routes.Assets.versioned(s"images/${resource.name}.png")" id="card-img">
+                        <h4> Resource name: @resource.name </h4>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

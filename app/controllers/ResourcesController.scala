@@ -19,7 +19,7 @@ class ResourcesController @Inject()(val messagesApi: MessagesApi, val mongoConne
 
   def displayCurrencies(): Action[AnyContent] = Action.async { implicit request =>
     mongoConnection.retrieveAllResources("currencies").map {
-      currenciesColl => Ok(views.html.resources(currenciesColl))
+      currenciesColl => Ok(views.html.currencies(currenciesColl))
     }
   }
 

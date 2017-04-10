@@ -1,40 +1,49 @@
 html,body {
     height:100%;
     background: #364554;
+    padding-top: 30px;
 }
 
-.navbar-main {
-    background-color: whitesmoke;
-    height: 80px;
-    border: 100px red;
+.jumbotron {
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.navbar-main .navbar-brand {
-    color: black;
-    vertical-align: middle;
-    line-height:40px;
+.navbar-inverse .navbar-nav > li > a {
+    color: #c4c4c4;
 }
 
-.nav-sidebar {
-    margin-left: -12px;
-    background-color: #1c3754;
-    height: 100%;
+.navbar {
+    margin-bottom: 0;
 }
 
-.nav-sidebar > li > a {
-    padding-left: 20px;
-    color: white;
-    font-size: 20px;
+.nav > li > a {
+    font-size: 25px;
 }
 
-.nav-sidebar > li > a:hover {
+#img-nav{
+    margin-right: 0;
+}
+
+.nav > li > a:hover {
     background-color: lightgrey;
 }
 
-.nav-sidebar > li > a:active {
+.nav > li > a:active {
     background-color: lightgrey;
 }
 
-.nav-sidebar > li > a:visited {
+.nav > li > a:visited {
     background-color: lightgrey;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    height: 100px;
+}
+
+footer p {
+    margin-bottom: .25rem;
 }

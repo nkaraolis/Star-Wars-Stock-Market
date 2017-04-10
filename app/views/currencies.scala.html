@@ -1,0 +1,5 @@
+@(currencies: Seq[Resource])(implicit messages: Messages, request: Request[_])
+@import views.html.helpers.resource_grid
+@main("Currencies") {
+    @resource_grid(currencies)
+}

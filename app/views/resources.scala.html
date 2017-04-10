@@ -1,10 +1,6 @@
 @(resources: Seq[Resource])(implicit messages: Messages, request: Request[_])
+@import views.html.helpers.resource_grid
 @main("Resources") {
-    <div class="row">
-    @resources.map { resource =>
-        <div class="col-sm-2" style="text-align: center">
-            <h2 style="color: white"> Resource name: @resource.name </h2>
-        </div>
-    }
-    </div>
+    @resource_grid(resources)
+
 }
