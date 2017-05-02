@@ -2,25 +2,19 @@
   {
     "resourceID": 11,
     "value": "0",
-    "name": "Republic Credit",
+    "name": "Nova Crystal",
     "resourceType": "currencies"
   },
   {
     "resourceID": 12,
     "value": "0",
-    "name": "Wupiupi",
+    "name": "Republic Credit",
     "resourceType": "currencies"
   },
   {
     "resourceID": 13,
     "value": "0",
-    "name": "Druggat",
-    "resourceType": "currencies"
-  },
-  {
-    "resourceID": 14,
-    "value": "0",
-    "name": "Nova Crystal",
+    "name": "Wupiupi",
     "resourceType": "currencies"
   }
 ]

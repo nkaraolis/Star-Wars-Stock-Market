@@ -26,37 +26,37 @@
   {
     "resourceID": 5,
     "value": "0",
-    "name": "Ionite",
+    "name": "Gold",
     "resourceType": "resources"
   },
   {
     "resourceID": 6,
     "value": "0",
-    "name": "Lightsaber Crystal",
+    "name": "Ionite",
     "resourceType": "resources"
   },
   {
     "resourceID": 7,
     "value": "0",
-    "name": "Ore",
+    "name": "Lightsaber Crystal",
     "resourceType": "resources"
   },
   {
     "resourceID": 8,
     "value": "0",
-    "name": "Spice",
+    "name": "Quartz",
     "resourceType": "resources"
   },
   {
     "resourceID": 9,
     "value": "0",
-    "name": "Stygium",
+    "name": "Spice",
     "resourceType": "resources"
   },
   {
     "resourceID": 10,
     "value": "0",
-    "name": "Thorilide",
+    "name": "Stygium",
     "resourceType": "resources"
   }
 ]

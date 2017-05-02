@@ -12,6 +12,6 @@ case class Trader(traderID: Int = 0, firstName: String, lastName: String, email:
                   currencies: Seq[Balance] = Seq.empty,
                   resources: Seq[Resources] = Seq.empty)
 
-case class Balance(currency: Resource, amount: BigDecimal)
+case class Balance(currency: Resource, value: BigDecimal)
 
 case class Resources(resource: Resource, amount: Int)
